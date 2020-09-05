@@ -1,4 +1,6 @@
+import {App} from "_src/App";
+
 ReactDOM.render(
-    <h1>REACT SAMPLE CODE</h1>,
+    <App/>,
     document.getElementById('int-bookstore')
 );
