@@ -7,8 +7,6 @@ import {CATEGORY} from "_src/data/Data";
 import "./app.scss";
 
 
-
-
 export const APPVIEW = {
     HOME: 1,
     ADMIN: 2,
@@ -26,7 +24,8 @@ export class App extends React.Component {
     state = {
         data: {
             datalist: null,
-            booklist: null
+            booklist: null,
+            bookfilter: null,
         },
         ui: {
             currentPage: null
@@ -48,7 +47,8 @@ export class App extends React.Component {
             ui = this.state.action.cloneRoot('ui');
 
         data.datalist = Object.values(CATEGORY);
-        ui.currentPage = APPVIEW.SHOWCASE;
+        data.bookfilter = 'categories';
+        ui.currentPage = APPVIEW.SEARCH;
 
         this.setState({data, ui})
 
