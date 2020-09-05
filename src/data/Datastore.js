@@ -100,7 +100,7 @@ export const getBooksByAttr = (val, type) => {
  * @returns {*|*[]|any}
  */
 export const getBooksByGroupAttr = (val, type) => {
-    debugger
+
     let key = `INT_BOOK_BY_GROUP_${type}_${val}`.toUpperCase(),
         cache = getCachedItem(key);
 

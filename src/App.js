@@ -1,12 +1,12 @@
-import {AppContext} from "./AppContext";
-import HomePage from './page/Home'
 import {AdminPageLoadable, SearchPageLoadable, ShowcasePageLoadable} from "_src/page/Loadables";
+import HomePage from './page/Home'
 
+import {AppContext} from "./AppContext";
+import {CATEGORY} from "_src/data/Data";
 
 import "./app.scss";
 
 
-import {CATEGORY} from "_src/data/Data";
 
 
 export const APPVIEW = {
@@ -48,7 +48,7 @@ export class App extends React.Component {
             ui = this.state.action.cloneRoot('ui');
 
         data.datalist = Object.values(CATEGORY);
-        ui.currentPage = APPVIEW.HOME;
+        ui.currentPage = APPVIEW.SHOWCASE;
 
         this.setState({data, ui})
 
