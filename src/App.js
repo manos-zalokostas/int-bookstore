@@ -46,9 +46,9 @@ export class App extends React.Component {
         let data = this.state.action.cloneRoot('data'),
             ui = this.state.action.cloneRoot('ui');
 
+        ui.currentPage = APPVIEW.ADMIN;
         data.datalist = Object.values(CATEGORY);
         data.bookfilter = 'categories';
-        ui.currentPage = APPVIEW.SEARCH;
 
         this.setState({data, ui})
 

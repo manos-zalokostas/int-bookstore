@@ -120,7 +120,7 @@ export const getBooksByGroupAttr = (val, type) => {
  GET ALL ENTRIES FOR A CURRENT 'ATTRIBUTE'
  i.e GET ALL AVAILABLE 'ISBN' (SINGLE VALUES) OR 'CATEGORIES' (ARRAYS)
  => THE FUNCTION  REMOVES DUPLICATES ENTRIES WHEN AVAILABLE ('CATEOGRIES')
-AND RETURNS AND CACHES ONLY UNIQUE ENTRIES.
+ AND RETURNS AND CACHES ONLY UNIQUE ENTRIES.
  *------------------------------------------
  *
  * @param attr
@@ -154,20 +154,23 @@ export const getBookAttributes = (attr) => {
  *
  * @param book
  */
-export const addBook = (book) => {
+export const addBook = async (book) => {
 
-    if (isValidBook(book)) {
+    let isValid = await isValidBook(book);
+
+    if (isValid) {
 
         localStorage.clear();
 
         DATA.books.push(book);
 
-        setCacheData(JSON.stringify(DATA))
+        setCacheData(DATA)
 
-        return
+        return true;
     }
 
-    console.log('NOT VALID SCHEME', book);
+    return 'NOT VALID SCHEME';
+
 };
 
 

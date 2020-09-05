@@ -1,3 +1,5 @@
+import {DATA} from "_src/data/Data";
+
 /*****************************************************
  *
  *
@@ -21,10 +23,10 @@ export const getCacheData = () => JSON.parse(localStorage.getItem(DATAKEY));
 
 /**
  *
- * @param jsondata
+ * @param data
  * @private
  */
-export const setCacheData = (jsondata) => localStorage.setItem(DATAKEY, jsondata);
+export const setCacheData = (data) => localStorage.setItem(DATAKEY, JSON.stringify(data));
 
 
 /**

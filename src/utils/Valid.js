@@ -105,6 +105,16 @@ export const isLowerThan = (val, max) => {
     return isNumber(val) && val < max;
 }
 
+/**
+ *
+ * @param val
+ * @param max
+ * @returns {boolean|boolean}
+ */
+export const isLowerOrEqualTo = (val, max) => {
+    return isNumber(val) && val <= max;
+}
+
 
 /**
  *
@@ -121,10 +131,18 @@ export const isRegistered = (val, arr) => {
     return arr.includes(val);
 }
 
+
 /**
+ * A COMPLEX VALIDATION THAT IMPOSES THE VALID SHCEME OF A BOOK
+ THIS TYPE-CHECK IS PERFORMED ONLY BY THE DATASTORE AND NOT DURING USER DATA TYPING
+ FOR FEW REASONS
+ - THE ISBNs ARE NOT AVAILABLE BY THE UI DURING DATA TYPING
+ - THE DATASTORE SHOULD ALWAYS PERFORM VALIDATION DURING DATA REGISTRATIONS
+ - UI VALIDATIONS ARE THERE ONLY FOR BETTER USER EXPRIENCES AND CONNOT CONFIRM USER INPUTS
+ * --------------------------------------
  *
  * @param data
- * @returns {boolean|boolean}
+ * @returns {Promise<boolean>}
  */
 export const isValidBook = (data) => {
 
@@ -132,16 +150,18 @@ export const isValidBook = (data) => {
         i13s = getBookAttributes('isbn13');
 
 
-    return (
+    let isValid = (
         hasCharsLength(data.title, 120, 10) && !hasCharRestricted(data.title)
         && hasCharsLength(data.description, 512, 10) && hasCharsUpper(data.description[0])
         && hasValidEntries(data.categories, 5)
         && hasValidEntries(data.authors, 4)
         && hasCharsLength(data.publisher, 60, 5)
-        && hasDigitsLength(data.year, 9999, 1000)
+        && hasDigitsLength(data.year, 9999, 1000) && isLowerOrEqualTo(data.year, (new Date()).getFullYear())
         && hasDigitsLength(data.pages, 9999, 50)
         && hasDigitsLength(data.isbn13, 9999999999999, 100000000000) && !isRegistered(data.isbn10, i10s)
         && hasDigitsLength(data.isbn10, 9999999999, 1000000000) && !isRegistered(data.isbn13, i13s)
     )
+
+    return isValid && Promise.resolve(true) || Promise.reject(false)
 
 }
