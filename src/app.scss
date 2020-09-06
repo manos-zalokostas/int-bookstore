@@ -7,16 +7,19 @@
   height: 90%;
   background: white;
 
-  @import "navigation-menu";
+
+  @import "./page/navigation-menu";
   //
-  article {
+  > article {
     box-sizing: border-box;
     padding: 20px;
-    height: 100%;
-
-
-    @import "home";
-
+    height: 90%;
   }
+
+
+  @import "./page/home";
+
+  @import "./page/search";
+
 
 }

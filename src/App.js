@@ -71,9 +71,9 @@ export class App extends React.Component {
         let data = this.state.action.cloneField('data'),
             ui = this.state.action.cloneField('ui');
 
-        data.datalist = Object.values(CATEGORY);
+        data.datalist = Object.values(CATEGORY).sort();
         data.bookfilter = 'categories';
-        ui.currentPage = APPVIEW.HOME;
+        ui.currentPage = APPVIEW.SEARCH;
 
         this.setState({data, ui})
 

@@ -16,6 +16,8 @@ import {AppContext} from "_src/AppContext";
 import {APPVIEW} from "_src/App";
 
 
+import "./book.scss";
+
 /*
 
  */
@@ -143,7 +145,7 @@ const ViewMid = ({book, action}) => {
                  onClick={() => showBook(book, action)}>
 
             <div>
-                <img src={book.image} style={{width: 100, height: 50}}/>
+                <img src={book.image}/>
             </div>
 
             <div>

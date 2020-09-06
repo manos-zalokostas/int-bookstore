@@ -13,7 +13,7 @@ export default () => {
     let {action} = useContext(AppContext);
 
     return (
-        <article>
+        <article id='page-home'>
             <h1>Welcome to Bookstore App</h1>
         </article>
     )

@@ -64,7 +64,7 @@ export const AUTHORS = {
             "isbn13": "9781593275846",
             "isbn10": "1593275846",
             "title": "Eloquent JavaScript, Second Edition",
-            "authors": [AUTHORS.MARHAV],
+            "authors": [AUTHORS.MARHAV, CATEGORY.ARTS],
             "year": "2014",
             "publisher": "No Starch Press",
             "pages": 472,
@@ -91,7 +91,7 @@ export const AUTHORS = {
             "publisher": "O'Reilly Media",
             "pages": 460,
             "description": "Like it or not, JavaScript is everywhere these days-from browser to server to mobile-and now you, too, need to learn the language or dive deeper than you have.  This concise book guides you into and through JavaScript, written by a veteran programmer who once found himself in the same position.",
-            "categories": [CATEGORY.DATB, CATEGORY.FASH],
+            "categories": [CATEGORY.DATB, CATEGORY.FASH, CATEGORY.ARTS],
         },
         {
             "isbn13": "9781491950296",
@@ -113,7 +113,7 @@ export const AUTHORS = {
             "publisher": "No Starch Press",
             "pages": 352,
             "description": "ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that ECMAScript 6 brings to JavaScript.",
-            "categories": [CATEGORY.CERT, CATEGORY.FASH],
+            "categories": [CATEGORY.CERT, CATEGORY.FASH, CATEGORY.ARTS],
         },
         {
             "isbn13": "9781491904244",
@@ -124,7 +124,7 @@ export const AUTHORS = {
             "publisher": "O'Reilly Media",
             "pages": 278,
             "description": "No matter how much experience you have with JavaScript, odds are you don’t fully understand the language. As part of the 'You Don’t Know JS' series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built.",
-            "categories": [CATEGORY.HIST, CATEGORY.CALL],
+            "categories": [CATEGORY.HIST, CATEGORY.CALL, CATEGORY.ARTS],
         },
         {
             "isbn13": "9781449325862",
@@ -135,7 +135,7 @@ export const AUTHORS = {
             "publisher": "O'Reilly Media",
             "pages": 234,
             "description": "This pocket guide is the perfect on-the-job companion to Git, the distributed version control system. It provides a compact, readable introduction to Git for new users, as well as a reference to common commands and procedures for those of you with Git experience.",
-            "categories": [CATEGORY.CAD, CATEGORY.CERT],
+            "categories": [CATEGORY.CAD, CATEGORY.CERT, CATEGORY.ARTS],
         },
         {
             "isbn13": "9781449337711",
@@ -146,7 +146,7 @@ export const AUTHORS = {
             "publisher": "O'Reilly Media",
             "pages": 538,
             "description": "Design and build Web APIs for a broad range of clients—including browsers and mobile devices—that can adapt to change over time. This practical, hands-on guide takes you through the theory and tools you need to build evolvable HTTP services with Microsoft’s ASP.NET Web API framework. In the process, you’ll learn how design and implement a real-world Web API.",
-            "categories": [CATEGORY.COMP, CATEGORY.CAD],
+            "categories": [CATEGORY.COMP, CATEGORY.CAD, CATEGORY.ARTS],
         }
     ]
 };

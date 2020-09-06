@@ -107,7 +107,7 @@ export const getBooksByGroupAttr = (val, type) => {
     if (cache) return cache;
 
     let data = VALID_FILTERS.includes(type)
-        && DATA.books.filter(book => book[type].includes(val))
+        && DATA.books.filter(book => book[type].includes(val)).sort()
         || [];
 
     if (data) setCachedItem(key, data);

@@ -21,6 +21,8 @@ import {Book, VIEW} from "_src/component/Book";
 
 import {AppContext} from "_src/AppContext";
 
+import "./search.scss"
+
 
 const MULTIVALUE_ATTRIBUTES = ['categories', 'authors'];
 
@@ -35,21 +37,27 @@ export default () => {
 
 
     return (
-        <article>
+        <article id='page-search'>
 
             <header>SEARCH TO FIND YOUR NEW BOOK</header>
 
             <form>
 
-                <SelectList cnf={{data, action}}/>
+                <div>
+                    <SelectList cnf={{data, action}}/>
+                </div>
 
-                <RadioButtons cnf={{data, action}}/>
+                <div>
+                    <RadioButtons cnf={{data, action}}/>
+                </div>
 
             </form>
 
             <hr/>
 
-            <BookList cnf={{data}}/>
+            <main>
+                <BookList cnf={{data}}/>
+            </main>
 
         </article>
     )
@@ -98,11 +106,13 @@ const RadioButtons = ({cnf}) => {
     const types = getValidFilters();
 // debugger
     return types.map(type => (
-        <>
-            <input type="radio" id={type} name="filter" value={type} checked={cnf.data.bookfilter === type}
-                   onClick={() => populateSelectList(type, cnf.action)}/>
-            <label htmlFor={type}>{type}</label>
-        </>
+        type !== 'description' && (
+            <div className='radio-group'>
+                <input type="radio" id={type} name="filter" value={type} checked={cnf.data.bookfilter === type}
+                       onClick={() => populateSelectList(type, cnf.action)}/>
+                <label htmlFor={type}>{type}</label>
+            </div>
+        )
     ))
 };
 
@@ -119,9 +129,9 @@ const BookList = ({cnf}) => {
     return cnf.data.booklist && (
         cnf.data.booklist.map(
             book => (
-                <div>
+                <>
                     <Book book={book} view={VIEW.MID}/>
-                </div>
+                </>
             )
         )
     ) || null
