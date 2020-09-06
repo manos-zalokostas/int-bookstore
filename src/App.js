@@ -116,7 +116,9 @@ const NavigationMenu = ({root}) => {
                     {page}
                 </button>)
             )
-        } </>
+        }
+            <button onClick={() => localStorage.clear() || window.location.reload()}>RESET</button>
+        </>
     );
 
 }
