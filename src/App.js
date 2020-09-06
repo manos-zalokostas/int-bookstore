@@ -26,15 +26,20 @@ export class App extends React.Component {
             datalist: null,
             booklist: null,
             bookfilter: null,
+            currentBook: null
         },
         ui: {
             currentPage: null
         },
         action: {
+            cloneState: () => ({...JSON.parse(JSON.stringify(this.state)), action: this.state.action}),
+            updateState: (state) => this.setState(state),
             cloneRoot: (attr) => JSON.parse(JSON.stringify(this.state[attr])),
-            updateRoot: (attr, val) => this.setState({[attr]: val})
+            updateRoot: (attr, val) => this.setState({[attr]: val}),
         }
     };
+
+
 
 
     /**
@@ -46,7 +51,7 @@ export class App extends React.Component {
         let data = this.state.action.cloneRoot('data'),
             ui = this.state.action.cloneRoot('ui');
 
-        ui.currentPage = APPVIEW.ADMIN;
+        ui.currentPage = APPVIEW.SEARCH;
         data.datalist = Object.values(CATEGORY);
         data.bookfilter = 'categories';
 

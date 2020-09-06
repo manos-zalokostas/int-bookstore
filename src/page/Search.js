@@ -205,7 +205,7 @@ const filterEntriesMulti = async (filter, type, action) => {
 const filterEntriesSingle = async (filter, type, action) => {
     let booklist, data;
 
-    if (type === 'pages') filter = Number(filter);
+    filter = enforceDatatype(type, filter)
 
     booklist = await getBooksByAttr(filter, type);
     data = action.cloneRoot('data');
@@ -216,3 +216,16 @@ const filterEntriesSingle = async (filter, type, action) => {
 
 }
 
+
+/**
+ *
+ * @param type
+ * @param filter
+ */
+const enforceDatatype = (type, filter) => {
+
+    if (type === 'pages') return Number(filter);
+
+    return filter
+
+}

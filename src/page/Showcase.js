@@ -1,16 +1,28 @@
-import {Book, VIEW} from "_src/component/Book";
+import {useContext} from "react";
 import {getBooksByAttr, getBooksByGroupAttr} from "_src/data/Datastore";
-import {DATA} from "_src/data/Data";
+import {Book, VIEW} from "_src/component/Book";
+
+import {AppContext} from "_src/AppContext";
 
 
+const DEFAULT_FILTER = 'categories';
+
+
+/**
+ *
+ * @returns {*}
+ */
 export default () => {
+
+    let {data} = useContext(AppContext);
+
 
     return (
         <article className='page-showcase'>
 
             <section className='page-book'>
 
-                <Book book={SAMPLEBOOK}/>
+                <Book book={data.currentBook}/>
 
             </section>
 
@@ -21,7 +33,7 @@ export default () => {
 
                 <div>
                     {
-                        getBooksByGroupAttr(SAMPLECATEGORY, SAMPLEFILTER).map(
+                        getBooksByGroupAttr(data.currentBook.categories[0], DEFAULT_FILTER).map(
                             book => (
                                 <div>
                                     <Book book={book} view={VIEW.MIN}/>
@@ -40,6 +52,3 @@ export default () => {
 }
 
 
-const SAMPLEBOOK = DATA.books[0];
-const SAMPLECATEGORY = 'art';
-const SAMPLEFILTER = 'category';

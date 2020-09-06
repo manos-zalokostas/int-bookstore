@@ -1,19 +1,24 @@
 /********************************************************************
  *
-"BOOK" COMPONENT
-*********************
+ "BOOK" COMPONENT
+ *********************
 
-COMPONENT CARRIES 3 DISTINCT VIEW TYPES THAT  SERVE DIFFERENT ASPECTS  OF THE APP
+ COMPONENT CARRIES 3 DISTINCT VIEW TYPES THAT  SERVE DIFFERENT ASPECTS  OF THE APP
  - FULL => USED BY 'SHOWCASE' PAGE WHERE A FULL DESCRIPTION OF THE BOOK IS DISPLAYED
  - MID  =>   USED BY 'SEARCH' PAGE, WHERE SEARCH RESULTS ARE LISTED ACCORDING TO USER 'SEARCH' FILTERING
  - MIN   =>  USED BY 'SHOWCASE' PAGE BOTTOM AREA, WHERE SUGGESTIONS BOOKS ARE LISTED BASED ON 'NAVIGATION' CRITERIA
  *
  *
-***************************************************************************** */
+ ***************************************************************************** */
+
+import {useContext} from 'react';
+import {AppContext} from "_src/AppContext";
+import {APPVIEW} from "_src/App";
 
 
+/*
 
-
+ */
 export const VIEW = {
     FULL: 0,
     MID: 1,
@@ -30,9 +35,11 @@ export const VIEW = {
  */
 export const Book = ({book, view = null}) => {
 
-    if (view === VIEW.MIN) return <ViewMin book={book}/>
+    let {action} = useContext(AppContext)
 
-    if (view === VIEW.MID) return <ViewMid book={book}/>
+    if (view === VIEW.MIN) return <ViewMin book={book} action={action}/>
+
+    if (view === VIEW.MID) return <ViewMid book={book} action={action}/>
 
     return <ViewFull book={book}/>
 
@@ -125,13 +132,15 @@ const ViewFull = ({book}) => {
 /**
  *
  * @param book
+ * @param action
  * @returns {*}
  * @constructor
  */
-const ViewMid = ({book}) => {
+const ViewMid = ({book, action}) => {
 
     return (
-        <article className='book-view-mid'>
+        <article className='book-view-mid'
+                 onClick={() => showBook(book, action)}>
 
             <div>
                 <img src={book.image} style={{width: 100, height: 50}}/>
@@ -154,13 +163,15 @@ const ViewMid = ({book}) => {
 /**
  *
  * @param book
+ * @param action
  * @returns {*}
  * @constructor
  */
-const ViewMin = ({book}) => {
+const ViewMin = ({book, action}) => {
 
     return (
-        <article className='book-view-min'>
+        <article className='book-view-min'
+                 onClick={() => showBook(book, action)}>
 
             <div>
                 <img src={book.image} style={{width: 100, height: 50}}/>
@@ -176,4 +187,23 @@ const ViewMin = ({book}) => {
 }
 
 
+/**
+ *
+ * @param book
+ * @param action
+ */
+const showBook = (book, action) => {
+
+    let clone = action.cloneState();
+
+    clone.data.currentBook = book;
+    clone.ui.currentPage = APPVIEW.SHOWCASE;
+
+    action.updateState(clone)
+}
+
+
+/*
+
+ */
 const StarRate = () => 'Stars';
