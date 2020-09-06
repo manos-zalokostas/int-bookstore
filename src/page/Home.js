@@ -14,7 +14,7 @@ export default () => {
 
     return (
         <article id='page-home'>
-            <h1>Welcome to Bookstore App</h1>
+            <h1>Welcome to Bookstore Task</h1>
         </article>
     )
 }
