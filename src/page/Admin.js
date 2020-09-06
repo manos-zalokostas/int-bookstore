@@ -59,76 +59,81 @@ export default () => {
     let cnf = {data, error, setData, setError};
 
     return (
-        <form>
+        <article>
 
-            <div>
-                <Label attr="title" info={ERR.TITL}/>
-                <InputTitle cnf={cnf}/>
-                <ErrorMessage props={[error.title, ERR.TITL]}/>
-            </div>
+            <form>
 
-            <div>
-                <Label attr="description" info={ERR.DESC}/>
-                <TextAreaDescription cnf={cnf}/>
-                <ErrorMessage props={[error.description, ERR.DESC]}/>
-            </div>
+                <div>
+                    <Label attr="title" info={ERR.TITL}/>
+                    <InputTitle cnf={cnf}/>
+                    <ErrorMessage props={[error.title, ERR.TITL]}/>
+                </div>
 
-            <div>
-                <Label attr="categories" info={ERR.CAT}/>
-                <SelectCategories cnf={cnf}/>
-                <ErrorMessage props={[error.categories, ERR.CAT]}/>
-            </div>
+                <div>
+                    <Label attr="description" info={ERR.DESC}/>
+                    <TextAreaDescription cnf={cnf}/>
+                    <ErrorMessage props={[error.description, ERR.DESC]}/>
+                </div>
 
-            <div>
-                <Label attr="authors" info={ERR.AUTH}/>
-                <SelectAuthors cnf={cnf}/>
-                <ErrorMessage props={[error.authors, ERR.AUTH]}/>
-            </div>
+                <div>
+                    <Label attr="categories" info={ERR.CAT}/>
+                    <SelectCategories cnf={cnf}/>
+                    <ErrorMessage props={[error.categories, ERR.CAT]}/>
+                </div>
 
-            <div>
-                <Label attr="publisher" info={ERR.PUB}/>
-                <InputPublisher cnf={cnf}/>
-                <ErrorMessage props={[error.publisher, ERR.PUB]}/>
-            </div>
+                <div>
+                    <Label attr="authors" info={ERR.AUTH}/>
+                    <SelectAuthors cnf={cnf}/>
+                    <ErrorMessage props={[error.authors, ERR.AUTH]}/>
+                </div>
 
-            <div>
-                <Label attr="year" info={ERR.YEAR}/>
-                <InputYear cnf={cnf}/>
-                <ErrorMessage props={[error.year, ERR.YEAR]}/>
-            </div>
+                <div>
+                    <Label attr="publisher" info={ERR.PUB}/>
+                    <InputPublisher cnf={cnf}/>
+                    <ErrorMessage props={[error.publisher, ERR.PUB]}/>
+                </div>
 
-            <div>
-                <Label attr="pages" info={ERR.PAGE}/>
-                <InputPages cnf={cnf}/>
-                <ErrorMessage props={[error.pages, ERR.PAGE]}/>
-            </div>
+                <div>
+                    <Label attr="year" info={ERR.YEAR}/>
+                    <InputYear cnf={cnf}/>
+                    <ErrorMessage props={[error.year, ERR.YEAR]}/>
+                </div>
 
-            <div>
-                <Label attr="isbn13" info={ERR.I13}/>
-                <InputIsbn13 cnf={cnf}/>
-                <ErrorMessage props={[error.isbn13, ERR.I13]}/>
-            </div>
+                <div>
+                    <Label attr="pages" info={ERR.PAGE}/>
+                    <InputPages cnf={cnf}/>
+                    <ErrorMessage props={[error.pages, ERR.PAGE]}/>
+                </div>
 
-            <div>
-                <Label attr="isbn10" info={ERR.I10}/>
-                <InputIsbn10 cnf={cnf}/>
-                <ErrorMessage props={[error.isbn10, ERR.I10]}/>
-            </div>
+                <div>
+                    <Label attr="isbn13" info={ERR.I13}/>
+                    <InputIsbn13 cnf={cnf}/>
+                    <ErrorMessage props={[error.isbn13, ERR.I13]}/>
+                </div>
 
-
-            <div>
-                <label htmlFor="image">Choose a profile picture:</label>
-                <InputImage cnf={cnf}/>
-            </div>
+                <div>
+                    <Label attr="isbn10" info={ERR.I10}/>
+                    <InputIsbn10 cnf={cnf}/>
+                    <ErrorMessage props={[error.isbn10, ERR.I10]}/>
+                </div>
 
 
-            <hr/>
+                <div>
+                    <label htmlFor="image">Choose a profile picture:</label>
+                    <InputImage cnf={cnf}/>
+                </div>
 
-            <input type='button' value='submit' disabled={shouldDisable(data, error)}
-                   onClick={() => _handleFormSubmission(cnf)}
-            />
-            <ErrorMessage props={[error.generic, ERR.GEN]}/>
-        </form>
+
+                <hr/>
+
+                <input type='button' value='submit' disabled={shouldDisable(data, error)}
+                       onClick={() => _handleFormSubmission(cnf)}
+                />
+                <ErrorMessage props={[error.generic, ERR.GEN]}/>
+
+            </form>
+
+        </article>
     )
 }
 

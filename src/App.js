@@ -18,6 +18,7 @@
 
 import {AdminPageLoadable, SearchPageLoadable, ShowcasePageLoadable} from "_src/page/Loadables";
 import HomePage from './page/Home'
+import {Home, Search, Admin, Reset} from "_src/comon/SVGIcon";
 
 import {AppContext} from "./AppContext";
 import {CATEGORY} from "_src/data/Data";
@@ -106,18 +107,19 @@ export class App extends React.Component {
  */
 const NavigationMenu = ({root}) => {
 
-    const PAGES = ['HOME', 'SEARCH', 'ADMIN'];
-
     return (
-        <>{
-            PAGES.map(page => (
-                <button
-                    onClick={() => root.setState({ui: {currentPage: APPVIEW[page]}})}>
-                    {page}
-                </button>)
-            )
-        }
-            <button onClick={() => localStorage.clear() || window.location.reload()}>RESET</button>
+        <>
+            <nav id='navigation-menu'>
+                <a title='Home' className={APPVIEW.HOME === root.state.ui.currentPage ? 'active' : ''}
+                   onClick={() => root.setState({ui: {currentPage: APPVIEW.HOME}})}>{<Home />}</a>
+                <a title='Search' className={APPVIEW.SEARCH === root.state.ui.currentPage ? 'active' : ''}
+                   onClick={() => root.setState({ui: {currentPage: APPVIEW.SEARCH}})}>{<Search/>}</a>
+                <a title='Admin' className={APPVIEW.ADMIN === root.state.ui.currentPage ? 'active' : ''}
+                   onClick={() => root.setState({ui: {currentPage: APPVIEW.ADMIN}})}>{<Admin/>}</a>
+                <a title='Reset'
+                   onClick={() => localStorage.clear() || window.location.reload()}>{<Reset/>}</a>
+            </nav>
+            <hr />
         </>
     );
 
