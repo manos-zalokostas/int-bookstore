@@ -73,7 +73,7 @@ export class App extends React.Component {
 
         data.datalist = Object.values(CATEGORY).sort();
         data.bookfilter = 'categories';
-        ui.currentPage = APPVIEW.SEARCH;
+        ui.currentPage = APPVIEW.SHOWCASE;
 
         this.setState({data, ui})
 

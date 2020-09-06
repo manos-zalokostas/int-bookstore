@@ -57,12 +57,12 @@ export const Book = ({book, view = null}) => {
 const ViewFull = ({book}) => {
 
     return (
-        <article className='bokk-view-full'>
+        <article className='book-view-full'>
 
             <div className='book-vfl-row1'>
 
                 <div className='book-vfl-col1'>
-                    <img src={book.image} style={{width: 200, height: 100}}/>
+                    {book.image && <img src={book.image}/> || <span className='no-image'>No Image Available</span>}
                 </div>
 
                 <div className='book-vfl-col2'>
@@ -118,9 +118,9 @@ const ViewFull = ({book}) => {
                     {book.authors.join(', ')}
                 </div>
 
-                <div className='book-vfl-stars'>
-                    <StarRate/>
-                </div>
+                {/*<div className='book-vfl-stars'>*/}
+                {/*    <StarRate/>*/}
+                {/*</div>*/}
 
             </div>
 
@@ -145,7 +145,7 @@ const ViewMid = ({book, action}) => {
                  onClick={() => showBook(book, action)}>
 
             <div>
-                <img src={book.image}/>
+                {book.image && <img src={book.image}/> || <span className='no-image'>No Image Available</span>}
             </div>
 
             <div>
@@ -176,7 +176,7 @@ const ViewMin = ({book, action}) => {
                  onClick={() => showBook(book, action)}>
 
             <div>
-                <img src={book.image} style={{width: 100, height: 50}}/>
+                {book.image && <img src={book.image}/> || <span className='no-image'>No Image Available</span>}
             </div>
 
             <div>

@@ -1,0 +1,35 @@
+#page-showcase {
+background: #eee;
+
+  section.page-book {
+    display: table;
+  }
+
+  .prompt {
+    color: white;
+    padding: 5px 10px;
+    background: steelblue;
+  }
+
+  section.page-suggest {
+    float: left;
+    overflow: auto;
+    background: steelblue;
+
+    > div {
+      float: left;
+      width: 300%;
+      overflow: auto;
+
+      .wrap-book-min {
+        float: left;
+        width: 175px;
+        height: 200px;
+        margin: 10px;
+
+      }
+
+    }
+
+  }
+}

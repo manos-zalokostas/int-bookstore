@@ -64,7 +64,7 @@ export const AUTHORS = {
             "isbn13": "9781593275846",
             "isbn10": "1593275846",
             "title": "Eloquent JavaScript, Second Edition",
-            "authors": [AUTHORS.MARHAV, CATEGORY.ARTS],
+            "authors": [AUTHORS.MARHAV],
             "year": "2014",
             "publisher": "No Starch Press",
             "pages": 472,

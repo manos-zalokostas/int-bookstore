@@ -1,0 +1,94 @@
+.book-view-full {
+  display: table;
+  box-sizing: border-box;
+  padding: 10px;
+  //background: sienna;
+
+  .book-vfl-row1 {
+    //background: green;
+
+
+    .book-vfl-col1 {
+      display: table-cell;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .no-image {
+        display: block;
+        box-sizing: border-box;
+        border: 1px solid white;
+        padding-top: 30px;
+        text-align: center;
+        margin: auto auto auto 0;
+        width: 90%;
+        height: 475px;
+        background: #ccc;
+      }
+
+    }
+
+    .book-vfl-col2 {
+      display: table-cell;
+      width: 60%;
+
+      > div {
+        border-bottom: 1px solid #bbb;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: right;
+      }
+
+      .book-vfl-title {
+        h1 {
+          font-size: 30px;
+          padding: 0;
+          margin: 0;
+        }
+      }
+
+      .book-vfl-description {
+      }
+
+      .book-vfl-socials {
+      }
+
+      .book-vfl-category {
+      }
+
+      .book-vfl-year {
+      }
+
+      .book-vfl-pages {
+      }
+
+      .book-vfl-publisher {
+      }
+
+      .book-vfl-isbn10 {
+      }
+
+      .book-vfl-isbn13 {
+      }
+
+      .book-vfl-buy {
+      }
+
+
+    }
+
+
+    .book-vfl-row2 > div {
+      display: inline;
+
+      .book-vfl-author {
+
+      }
+
+    }
+
+  }
+
+}
