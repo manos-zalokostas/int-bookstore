@@ -141,12 +141,12 @@ const populateSelectList = async (filter, action) => {
 
     let datalist = await getBookAttributes(filter);
 
-    let data = action.cloneRoot('data');
+    let data = action.cloneField('data');
     data.datalist = datalist;
     data.bookfilter = filter;
 
 
-    action.updateRoot('data', data)
+    action.updateField('data', data)
 }
 
 
@@ -185,11 +185,11 @@ const filterEntriesMulti = async (filter, type, action) => {
     let booklist, data;
 
     booklist = await getBooksByGroupAttr(filter, type);
-    data = action.cloneRoot('data');
+    data = action.cloneField('data');
 
     data.booklist = booklist;
 
-    action.updateRoot('data', data)
+    action.updateField('data', data)
 }
 
 
@@ -208,11 +208,11 @@ const filterEntriesSingle = async (filter, type, action) => {
     filter = enforceDatatype(type, filter)
 
     booklist = await getBooksByAttr(filter, type);
-    data = action.cloneRoot('data');
+    data = action.cloneField('data');
 
     data.booklist = booklist;
 
-    action.updateRoot('data', data);
+    action.updateField('data', data);
 
 }
 

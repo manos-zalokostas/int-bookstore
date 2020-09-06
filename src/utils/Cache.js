@@ -54,6 +54,7 @@ export const getCachedItem = (idx) => {
  * @param val
  */
 export const setCachedItem = (idx, val) => {
+    console.log(`REGISTER CACHE: :: ${idx} `);
     localStorage.setItem(idx, JSON.stringify(val))
 }
 

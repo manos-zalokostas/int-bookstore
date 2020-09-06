@@ -1,3 +1,21 @@
+/**************************************************
+ *
+ *
+ THE ROOT FILE 'APP'
+ ***********************
+ - THE SCRIPT HOLDS THE 'STATE' OF THE APP, CREATES AND SHARES METHODS TO INTERACT WITH  AND PROVIDES THE 'ROUTING' MECHANISM
+ => THE STATE 'UI' FIELD HOLDS THE 'CURRENT-PAGE', THAT UPPON UPDATE WILL DEFINE THE UI FLOW PATH
+
+ - THE STATE 'ACTION' FIELD CREATES METHODS THAT MANIPULATE THE ROOT STATE AND SHARES THEM TO CHILD COMPONENTS TO ALLOW THEM TO INTERACT w/ IT
+ => THE 'CLONE' GROUP INVOKES A DEEP COPY w/ JSON SERIALIZATION SO THAT THE STATE CANNOT GET DIRECTLY ACCESSED
+ => THE 'UPDATE' GROUP RECEIVES AN UPDATED CLONE OF THE STATE AND DISPATCHES THE UPDATE
+ => THE 'XXX-STATE' WILL INTERACT w/ THE STATE AS A WHOLE
+ => THE 'XXX-FIELD' WILL INTERACT w/ THE STATE'S GIVEN FIELD'
+
+ *
+ */
+
+
 import {AdminPageLoadable, SearchPageLoadable, ShowcasePageLoadable} from "_src/page/Loadables";
 import HomePage from './page/Home'
 
@@ -7,6 +25,9 @@ import {CATEGORY} from "_src/data/Data";
 import "./app.scss";
 
 
+/*
+
+ */
 export const APPVIEW = {
     HOME: 1,
     ADMIN: 2,
@@ -34,12 +55,10 @@ export class App extends React.Component {
         action: {
             cloneState: () => ({...JSON.parse(JSON.stringify(this.state)), action: this.state.action}),
             updateState: (state) => this.setState(state),
-            cloneRoot: (attr) => JSON.parse(JSON.stringify(this.state[attr])),
-            updateRoot: (attr, val) => this.setState({[attr]: val}),
+            cloneField: (attr) => JSON.parse(JSON.stringify(this.state[attr])),
+            updateField: (attr, val) => this.setState({[attr]: val}),
         }
     };
-
-
 
 
     /**
@@ -48,12 +67,12 @@ export class App extends React.Component {
      */
     async componentDidMount() {
 
-        let data = this.state.action.cloneRoot('data'),
-            ui = this.state.action.cloneRoot('ui');
+        let data = this.state.action.cloneField('data'),
+            ui = this.state.action.cloneField('ui');
 
-        ui.currentPage = APPVIEW.SEARCH;
         data.datalist = Object.values(CATEGORY);
         data.bookfilter = 'categories';
+        ui.currentPage = APPVIEW.HOME;
 
         this.setState({data, ui})
 
@@ -68,19 +87,57 @@ export class App extends React.Component {
 
         return this.state.ui && (
             <AppContext.Provider value={this.state}>
-                <button onClick={() => this.setState({ui: {currentPage: APPVIEW.HOME}})}>HOME</button>
-                <button onClick={() => this.setState({ui: {currentPage: APPVIEW.SEARCH}})}>SEARCH</button>
-                <button onClick={() => this.setState({ui: {currentPage: APPVIEW.ADMIN}})}>ADMIN</button>
-                {
-                    (this.state.ui.currentPage === APPVIEW.ADMIN && <AdminPageLoadable/>)
-                    || (this.state.ui.currentPage === APPVIEW.SEARCH && <SearchPageLoadable/>)
-                    || (this.state.ui.currentPage === APPVIEW.SHOWCASE && <ShowcasePageLoadable/>)
-                    || <HomePage/>
-                }
+                <NavigationMenu root={this}/>
+                <Router page={this.state.ui.currentPage}/>
             </AppContext.Provider>
         ) || null
 
 
     };
 
+}
+
+
+/**
+ *
+ * @param root
+ * @returns {*}
+ * @constructor
+ */
+const NavigationMenu = ({root}) => {
+
+    const PAGES = ['HOME', 'SEARCH', 'ADMIN'];
+
+    return (
+        <>{
+            PAGES.map(page => (
+                <button
+                    onClick={() => root.setState({ui: {currentPage: APPVIEW[page]}})}>
+                    {page}
+                </button>)
+            )
+        } </>
+    );
+
+}
+
+
+/**
+ *
+ * @param page
+ * @returns {*}
+ * @constructor
+ */
+const Router = ({page}) => {
+    return Routes[page] || <HomePage/>
+}
+
+
+/*
+
+ */
+const Routes = {
+    [APPVIEW.ADMIN]: <AdminPageLoadable/>,
+    [APPVIEW.SEARCH]: <SearchPageLoadable/>,
+    [APPVIEW.SHOWCASE]: <ShowcasePageLoadable/>
 }
