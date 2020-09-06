@@ -21,7 +21,6 @@ import {Book, VIEW} from "_src/component/Book";
 
 import {AppContext} from "_src/AppContext";
 
-import "./search.scss"
 
 
 const MULTIVALUE_ATTRIBUTES = ['categories', 'authors'];

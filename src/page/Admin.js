@@ -59,7 +59,8 @@ export default () => {
     let cnf = {data, error, setData, setError};
 
     return (
-        <article>
+
+        <article id="page-admin">
 
             <form>
 
@@ -119,17 +120,17 @@ export default () => {
 
 
                 <div>
-                    <label htmlFor="image">Choose a profile picture:</label>
+                    <label htmlFor="image">bookcover :</label>
                     <InputImage cnf={cnf}/>
                 </div>
 
 
                 <hr/>
-
-                <input type='button' value='submit' disabled={shouldDisable(data, error)}
-                       onClick={() => _handleFormSubmission(cnf)}
-                />
-                <ErrorMessage props={[error.generic, ERR.GEN]}/>
+                <span className='form-submit'>
+                    <input type='button' value='submit' disabled={shouldDisable(data, error)}
+                           onClick={() => _handleFormSubmission(cnf)}/>
+                    <ErrorMessage props={[error.generic, ERR.GEN]}/>
+                </span>
 
             </form>
 
@@ -450,14 +451,14 @@ const ErrorMessage = ({props}) => <span className='int-error'>{props[0] && props
 
  */
 const ERR = {
-    TITL: 'max 120 characters min 10, allow the following special characters: @”#&*!',
-    DESC: 'max 512 characters and must start with the first letter be uppercase',
-    CAT: 'max 4 categories',
-    AUTH: 'max 3 Authors',
-    PUB: 'max 60 characters min 5',
-    YEAR: 'exactly 4 digits and less/equal to current year',
-    PAGE: 'max number of pages 9999',
-    I13: 'exactly 13 digits and must be unique',
-    I10: 'exactly 10 digits and must be unique',
-    GEN: 'data not accepted. please follow data rules and try again'
+    TITL: 'Max 120, min 10 chars and special chars: @”#&*!',
+    DESC: 'Max 512 chars and first letter be uppercase',
+    CAT: 'Max 4 categories',
+    AUTH: 'Max 3 Authors',
+    PUB: 'Max 60 characters min 5',
+    YEAR: 'Exactly 4 digits and less/equal to current year',
+    PAGE: 'Max number of pages 9999',
+    I13: 'Exactly 13 digits and must be unique',
+    I10: 'Exactly 10 digits and must be unique',
+    GEN: 'Not accepted. Please follow data rules and try again'
 }
